@@ -18,13 +18,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadDexClass() {
         val cacheFile = FileUtils.getCacheDir(applicationContext)
-        val internalPath = cacheFile.getAbsolutePath() + File.separator + "app-debug.apk"
+        val internalPath = cacheFile.getAbsolutePath() + File.separator + "classes.dex"
         val desFile = File(internalPath)
         try {
             if (!desFile.exists()){
                 desFile.createNewFile()
                 // 从assets目录下 copy 文件到 app/data/cache目录
-                FileUtils.copyFiles(this, "app-debug.apk", desFile)
+                FileUtils.copyFiles(this, "classes.dex", desFile)
             }
         } catch (e: IOException) {
             e.printStackTrace()
