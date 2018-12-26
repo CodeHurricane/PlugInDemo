@@ -18,13 +18,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadDexClass() {
         val cacheFile = FileUtils.getCacheDir(applicationContext)
-        val internalPath = cacheFile.getAbsolutePath() + File.separator + "hello.jar"
+        val internalPath = cacheFile.getAbsolutePath() + File.separator + "app-debug.apk"
         val desFile = File(internalPath)
         try {
-            if (!desFile.exists()) {
+            if (!desFile.exists()){
                 desFile.createNewFile()
                 // 从assets目录下 copy 文件到 app/data/cache目录
-                FileUtils.copyFiles(this, "hello.jar", desFile)
+                FileUtils.copyFiles(this, "app-debug.apk", desFile)
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             dynamic = libClazz.newInstance() as Dynamic
             if (dynamic != null)
                 Toast.makeText(this, dynamic.sayHelloy(), Toast.LENGTH_LONG).show()
-        } catch (e: Exception) {
+        } catch (e: Exception){
             e.printStackTrace()
         }
     }
